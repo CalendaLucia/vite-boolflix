@@ -67,7 +67,6 @@ export default {
 
 <template>
   <AppHeader @search="event"/>
-
   <AppMain/>
   <AppCard/>
 
