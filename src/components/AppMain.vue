@@ -44,7 +44,7 @@ export default {
         <div v-for="film in store.films" :key="film.id">
            <img :src="generateImageURL(film.poster_path)">
            <h3>{{ film.title}}</h3>
-           <h4>{{ film.original_title}}</h4>
+           <h4 v-if="film.original_title != film.title">{{ film.original_title}}</h4>
            <img :src="flag(film.original_language)">
            <h5>{{ film.original_language}}</h5>
            <div v-for="i in calculateStars(film.vote_average)" :key="i">
