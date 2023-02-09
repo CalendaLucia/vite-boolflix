@@ -18,7 +18,7 @@ export default {
     <nav class="navbar bg-light">
       <div class="container-fluid">
           <input v-model="store.searchText" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
-          <button class="btn btn-outline-success" type="submit" @click="$emit('search')">Search</button>
+          <button class="btn btn-outline-success" type="submit" @keyup="$emit('search')" @click="$emit('search')">Search</button>
       </div> 
     </nav>
   </div>
