@@ -3,7 +3,7 @@ import axios from 'axios'
 import { store } from './store';
 import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
-import AppCard from './components/AppCard.vue'
+
 
 
 export default {
@@ -17,8 +17,8 @@ export default {
   },
   components: {
     AppHeader,
-    AppMain,
-    AppCard,
+    AppMain
+
   },
 
   methods: {
@@ -65,8 +65,6 @@ export default {
 <template>
   <AppHeader @search="event"/>
   <AppMain/>
-  <AppCard/>
-
 </template>
 
 <style lang="scss">

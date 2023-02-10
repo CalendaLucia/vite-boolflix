@@ -1,5 +1,5 @@
 <script>
-
+import AppCard from './AppCard.vue';
 import { store } from '../store';
 export default {
     name:'AppMain',
@@ -7,6 +7,9 @@ export default {
         return {
             store
         }
+    },
+    components: {
+       AppCard
     },
     methods: {
         flag(lang) {
@@ -39,22 +42,8 @@ export default {
 
 <template>
     <div class="continer-fluid">
-      <div class="card">
-        
-        <div v-for="film in store.films" :key="film.id">
-           <img :src="generateImageURL(film.poster_path)">
-           <h3>{{ film.title}}</h3>
-           <h4 v-if="film.original_title != film.title">{{ film.original_title}}</h4>
-           <img :src="flag(film.original_language)">
-           <h5>{{ film.original_language}}</h5>
-           <div v-for="i in calculateStars(film.vote_average)" :key="i">
-              <i class="bi bi-star-fill"></i>
-           </div>
-           <div v-for="i in (5 - calculateStars(film.vote_average))" :key="i">
-             <i class="bi bi-star"></i>
-           </div>
-        </div>
-      </div>
+        <AppCard v-for="(film, index) in store.films" :key="index" :item="film"/>
+        <AppCard v-for="(serie, index) in store.series" :key="index" :item="serie"/>
     </div>
 </template>
 

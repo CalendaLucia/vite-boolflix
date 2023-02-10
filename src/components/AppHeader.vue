@@ -3,45 +3,36 @@ import { store } from '../store';
 export default {
   name:'AppHeader',
   data() {
-    return {
+    return {  
       store,
       show: false,
-    
-      
+      menuItems: [
+      { label: 'Home', href: '#' },
+      { label: 'Serie Tv', href: '#' },
+      { label: 'Film', href: '#' },
+      { label: 'Originals', href: '#' },
+      { label: 'Aggiunti di recente', href: '#' },
+      { label: 'La mia lista', href: '#' }
+    ],   
     }
   },
-
-
-};
+}
 
 </script>
 
 <template>
   <header>
-    <div class="container-fluid bg-black">
+    <div class="container-fluid">
       <nav class="navbar">
          <div class="container-fluid">
            <div class="menu left">
               <h1 class="text-danger h3">BOOLFLIX</h1>
               <div class="menu-list">
                 <ul class="list-group list-group-horizontal">
-                  <li class="item">
-                    <a href="#">Home</a>
-                  </li>
-                  <li class="item">
-                    <a href="#">Serie Tv</a>
-                  </li>
-                  <li class="item">
-                    <a href="#">Film</a>
-                  </li>
-                  <li class="item">
-                    <a href="#">Originals</a>
-                  </li>
-                  <li class="item">
-                    <a href="#">Aggiunti di recente</a>
-                  </li>
-                  <li class="item">
-                    <a href="#">La mia lista</a>
+                  <li class="item" v-for="item in menuItems" :key="item.id">
+                    <a :href="item.href">
+                       {{ item.label }}
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -53,7 +44,7 @@ export default {
                    <i class="bi bi-search" @click="show = !show"></i>
                    <div class="ctn-search-bar" v-show="show">
                      <input v-model="store.searchText" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                     <button class="btn btn-outline-success" type="submit" @click="search">Search</button>
+                     <button class="btn btn-outline-danger"  @click="search">Search</button>
                    </div>
                  </a>
                </li>
@@ -84,7 +75,10 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/partials/main.scss' as *;
-.menu {
+header {
+  background-color: #202020;
+
+  .menu {
    @include flex (space-around, baseline);
     
   h1 {
@@ -96,9 +90,14 @@ export default {
        padding: 0px 8px;
        list-style: none;
 
+       .bi-search {
+        font-size: 18px
+       }
+
          a {
            color: #b4b4b4;
            text-decoration: none;
+           font-size: 12px;
 
            &:hover {
              color: white;
@@ -109,6 +108,10 @@ export default {
 
   .bell {
   position: relative;
+
+  .bi-bell-fill {
+    font-size: 18px;
+  }
 
   .notification-badge {
     display: inline-block;
@@ -124,12 +127,16 @@ export default {
     font-size: 6px; 
   }
 }
+
+
  
 .profile {
   padding-right: 3px;
 }
 }
 
+
+}
 
 
 
