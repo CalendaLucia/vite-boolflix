@@ -44,7 +44,7 @@ export default {
                    <i class="bi bi-search" @click="show = !show"></i>
                    <div class="ctn-search-bar" v-show="show">
                      <input v-model="store.searchText" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                     <button class="btn btn-outline-danger"  @click="search">Search</button>
+                     <button class="btn btn-outline-danger" type="submit"  @click="$emit('search')">Search</button>
                    </div>
                  </a>
                </li>

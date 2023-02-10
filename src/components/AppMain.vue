@@ -11,40 +11,30 @@ export default {
     components: {
        AppCard
     },
-    methods: {
-        flag(lang) {
-            switch (lang) {
-                case 'en':
-                    lang = 'uk';
-                    break;
 
-                case 'pt':
-                    lang = 'po';
-                    break;
-
-                case 'es':
-                    lang = 'sp';
-                    break;
-            }
-            const flag = `https://www.worldometers.info//img/flags/small/tn_${lang}-flag.gif`;
-            return flag;
-        },
-        generateImageURL(posterPath, size = 'w342') {
-           return `https://image.tmdb.org/t/p/${size}/${posterPath}`;
-        },
-        calculateStars(vote) {
-          return Math.ceil(vote / 2);
-        },
-}
     }
 
 </script>
 
 <template>
-    <div class="continer-fluid">
-        <AppCard v-for="(film, index) in store.films" :key="index" :item="film"/>
-        <AppCard v-for="(serie, index) in store.series" :key="index" :item="serie"/>
+    <div class="continer-fluid myctn">
+       <AppCard v-for="film in store.films" :film='film' :key="film.id"/>
+        <!-- <AppCard v-for="(serie, index) in store.series" :key="index" :item="serie"/>  -->
+     
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+@use '../styles/partials/mixins.scss' as *;
+
+.myctn {
+   @include flex (space-around, center);
+   width: 100%;
+   padding: 20px 20px;
+   background-color: rebeccapurple;
+   margin: 0 auto;
+   overflow-x: scroll;
+  white-space: nowrap;
+
+}
+</style>
