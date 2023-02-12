@@ -76,7 +76,7 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/main.scss' as *;
 header {
-  background-color: #202020;
+  background-color:#050600;
 
   .menu {
    @include flex (space-around, baseline);

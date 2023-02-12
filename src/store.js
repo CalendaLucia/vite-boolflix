@@ -5,6 +5,7 @@ export const store = reactive ({
    searchText:'',
    films: [],
    series: [],
+   credits:[]
 
 })
 
